@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public class FreqList {
     // Map that stores each word and the number of times it has been added
-    protected HashMap<String, Integer> frequencyMap;
+    protected HashMap<String, Integer> flist;
     
     /**
      * constructor
      */
     public FreqList() {
-        frequencyMap = new HashMap<String, Integer>();
+        flist = new HashMap<String, Integer>();
     }
     
     /**
@@ -24,10 +24,10 @@ public class FreqList {
      * @param word the word to track
      */
     public void add(String word) {
-        if (frequencyMap.containsKey(word)) {
-            frequencyMap.put(word, frequencyMap.get(word) + 1); // increase count if it exists
+        if (flist.containsKey(word)) {
+            flist.put(word, flist.get(word) + 1); // increase count if it exists
         } else {
-            frequencyMap.put(word, 1); // first appearance
+            flist.put(word, 1); // first appearance
         }
     }
     
@@ -44,8 +44,8 @@ public class FreqList {
             throw new IllegalArgumentException("Invalid probability");
         }
         
-        for (String item : frequencyMap.keySet()) {
-            int times = frequencyMap.get(item);
+        for (String item : flist.keySet()) {
+            int times = flist.get(item);
             for (int j = 0; j < times; j++) {
                 weightedWords.add(item);
             }
@@ -71,8 +71,8 @@ public class FreqList {
      */
     public String toString() {
         String result = "Frequency List: ";
-        for (String label : frequencyMap.keySet()) {
-            result += "<" + label + "=" + frequencyMap.get(label) + ">";
+        for (String label : flist.keySet()) {
+            result += "<" + label + "=" + flist.get(label) + ">";
         }
         return result;
     }
